@@ -27,12 +27,9 @@ window.addEventListener("load", () => {
 			if (ms == 100) {
 				ms = 0;
 				seconds++;
-			}else if (seconds == 60){
-				seconds = 0;
-				minutes++;
-			}else if (minutes == 60){
-				minutes = 0;
-				hours++;
+			}else {
+				time(seconds, minutes);
+				time(minutes, hours);
 			}
 			display();
 		}
@@ -62,5 +59,12 @@ window.addEventListener("load", () => {
 
 	function display() {
 		timer.innerText = format(hours) + ':' + format(minutes) + ':' + format(seconds) + ':' + format(ms);
+	};
+
+	function time(firstValue, secondValue){
+		if (firstValue == 60) {
+			firstValue = 0;
+			secondValue++;
+		}
 	};
 });
